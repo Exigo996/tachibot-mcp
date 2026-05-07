@@ -28,3 +28,6 @@ export const hasQwenApiKey = (): boolean => !!process.env.QWEN_API_KEY;
 
 export const getDeepSeekApiKey = (): string | undefined => process.env.DEEPSEEK_API_KEY;
 export const hasDeepSeekApiKey = (): boolean => !!process.env.DEEPSEEK_API_KEY;
+
+export const getZaiApiKey = (): string | undefined => process.env.ZAI_API_KEY;
+export const hasZaiApiKey = (): boolean => !!process.env.ZAI_API_KEY;

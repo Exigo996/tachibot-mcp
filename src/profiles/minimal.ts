@@ -39,6 +39,7 @@ export const minimalProfile: ProfileConfig = {
     qwen_competitive: false,
     minimax_code: true,       // Cheap SWE - good for minimal
     minimax_agent: false,
+    glm_design: false,         // Design/styling - not in minimal set
     workflow: true,
     list_workflows: false,
     create_workflow: false,

@@ -57,6 +57,9 @@ export interface ToolsConfig {
   minimax_code: boolean;       // MiniMax M2.7 (SWE-Pro 56.22%, #1 AI Intelligence Index)
   minimax_agent: boolean;      // MiniMax M2.7 (agentic, self-evolving)
 
+  // z.ai GLM tools
+  glm_design: boolean;        // GLM-5V-Turbo (multimodal vision, design/styling)
+
   // Workflow tools
   workflow: boolean;
   list_workflows: boolean;

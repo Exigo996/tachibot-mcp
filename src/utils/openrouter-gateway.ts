@@ -98,6 +98,9 @@ export function mapModelToOpenRouter(model: string): string | null {
   if (model.startsWith('grok-')) {
     return `x-ai/${model}`; // Fallback for unmapped grok models
   }
+  if (model.startsWith('glm-')) {
+    return `z-ai/${model}`;
+  }
 
   // Unknown model - pass through as-is
   return model;

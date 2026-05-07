@@ -98,6 +98,14 @@ export const KIMI_MODELS = {
   K2_5: "moonshotai/kimi-k2.5",                 // Previous: multimodal + agent swarm (fallback)
 } as const;
 
+// GLM Models (ZhipuAI via z.ai direct API, also on OpenRouter)
+// GLM-5V-Turbo (Mar 2026) - Multimodal vision model, 200K context, design/styling specialist
+export const GLM_MODELS = {
+  GLM_5V_TURBO: "glm-5v-turbo",           // Multimodal vision: image+text+video, 200K ctx, design-to-code
+  GLM_5_TURBO: "glm-5-turbo",             // Text-only fast model (fallback)
+  GLM_5_1: "glm-5.1",                     // Agentic/coding flagship (fallback)
+} as const;
+
 // MiniMax Models (MiniMax via OpenRouter)
 // M2.7 released Mar 18, 2026 - Self-evolving, #1 AI Intelligence Index, SWE-Pro 56.22%
 export const MINIMAX_MODELS = {
@@ -139,6 +147,7 @@ export const PROVIDERS = {
   xai: GROK_MODELS,
   perplexity: PERPLEXITY_MODELS,
   openrouter: OPENROUTER_MODELS,
+  zai: GLM_MODELS,
 } as const;
 
 // All models combined for validation
@@ -150,6 +159,7 @@ export const ALL_MODELS = {
   ...KIMI_MODELS,
   ...QWEN_MODELS,
   ...MINIMAX_MODELS,
+  ...GLM_MODELS,
 } as const;
 
 // Type for any valid model name
@@ -202,6 +212,9 @@ export const CURRENT_MODELS = {
     qwen: QWEN_MODELS.CODER_NEXT,          // Qwen3-Coder-Next: 80B/3B MoE, 262K ctx, SWE >70% (no 3.6-coder yet)
     qwen_reason: QWEN_MODELS.MAX_THINKING, // 235B MoE thinking mode (HMMT 98%) — still best for reasoning
     minimax: MINIMAX_MODELS.M2_7,          // M2.7: SWE-Pro 56.22%, Multi-SWE #1, self-evolving
+  },
+  zai: {
+    design: GLM_MODELS.GLM_5V_TURBO,      // GLM-5V-Turbo: multimodal vision, design/styling specialist
   }
 } as const;
 
@@ -337,6 +350,13 @@ export const TOOL_DEFAULTS = {
     temperature: 0.5,                      // Balanced for agentic tasks
   },
 
+  // z.ai GLM tools - vision multimodal
+  glm_design: {
+    model: GLM_MODELS.GLM_5V_TURBO,      // Multimodal vision: design, styling, screenshots
+    maxTokens: 6000,
+    temperature: 0.7,                      // Balanced for creative design work
+  },
+
   // Meta tools
   think: {
     model: CURRENT_MODELS.openai.reason,
@@ -407,6 +427,11 @@ export const MODEL_DISPLAY_NAMES: Record<string, string> = {
   "minimax/minimax-m2.7": "minimax-m2.7",
   "minimax/minimax-m2.5": "minimax-m2.5",
   "minimax/minimax-m2.1": "minimax-m2.1",
+
+  // GLM (ZhipuAI / z.ai)
+  "glm-5v-turbo": "glm-5v-turbo",
+  "glm-5-turbo": "glm-5-turbo",
+  "glm-5.1": "glm-5.1",
 } as const;
 
 // Helper to get display name (falls back to model ID if not mapped)
@@ -464,4 +489,9 @@ export const MODEL_PRICING: Record<string, number> = {
   "minimax/minimax-m2.7": 0.00075,        // ($0.30 + $1.20) / 2 / 1000 - flagship
   "minimax/minimax-m2.5": 0.000685,       // legacy
   "minimax/minimax-m2.1": 0.000685,       // legacy
+
+  // z.ai GLM models (direct API)
+  "glm-5v-turbo": 0.00025,               // ($0.001 + $0.004) / 2 / 1000 - very cheap multimodal vision
+  "glm-5-turbo": 0.00025,                // cheap text model
+  "glm-5.1": 0.0005,                     // agentic/coding flagship
 } as const;

@@ -141,4 +141,7 @@ modelProviderRegistry.registerMany([
   { modelName: "gemini-analyze", toolName: "gemini_analyze_text", provider: "google" },
   { modelName: "perplexity-research", toolName: "perplexity_research", provider: "perplexity" },
   { modelName: "openai-reason", toolName: "openai_reason", provider: "openai", aliases: ["gpt-reason"] },
+
+  // GLM models (z.ai / ZhipuAI)
+  { modelName: "glm", toolName: "glm_design", provider: "z.ai", aliases: ["glm-5v-turbo", "glm-5v", "glm-design", "zai"] },
 ]);

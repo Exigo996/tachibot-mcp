@@ -41,7 +41,7 @@ if (savedThemeVars.RENDER_OUTPUT) process.env.RENDER_OUTPUT = savedThemeVars.REN
 if (savedThemeVars.TACHIBOT_THEME) process.env.TACHIBOT_THEME = savedThemeVars.TACHIBOT_THEME;
 
 // Import centralized API key utilities
-import { hasGrokApiKey, hasOpenAIApiKey, hasPerplexityApiKey, hasGeminiApiKey, hasOpenRouterApiKey } from "./utils/api-keys.js";
+import { hasGrokApiKey, hasOpenAIApiKey, hasPerplexityApiKey, hasGeminiApiKey, hasOpenRouterApiKey, hasZaiApiKey } from "./utils/api-keys.js";
 
 // Debug: Log API key status (for troubleshooting)
 if (process.env.DEBUG === 'true') {
@@ -51,7 +51,8 @@ if (process.env.DEBUG === 'true') {
     PERPLEXITY: hasPerplexityApiKey(),
     OPENAI: hasOpenAIApiKey(),
     GEMINI: hasGeminiApiKey(),
-    GROK: hasGrokApiKey()
+    GROK: hasGrokApiKey(),
+    ZAI: hasZaiApiKey()
   });
 }
 
@@ -81,6 +82,7 @@ import { getAllAdvancedTools, areAdvancedModesAvailable } from "./tools/advanced
 import { isOpenAIAvailable, getAllOpenAITools } from "./tools/openai-tools.js";
 import { isGeminiAvailable, geminiBrainstormTool, geminiAnalyzeCodeTool } from "./tools/gemini-tools.js";
 import { isOpenRouterAvailable } from "./tools/openrouter-tools.js";
+import { isZaiAvailable, getAllZaiTools } from "./tools/zai-tools.js";
 import { getTachiTools } from "./tools/tachi-tool.js";
 import { getPromptTechniqueTools } from "./tools/prompt-technique-tools.js";
 import { withParamAliases } from "./utils/param-aliases.js";
@@ -777,6 +779,12 @@ async function initializeServer() {
       console.error(`✅ Registered planner tools (planner_maker, planner_runner, list_plans)`);
     }
 
+    // Register z.ai tools (GLM-5V-Turbo - design/styling vision model)
+    if (isZaiAvailable()) {
+      const zaiTools = getAllZaiTools();
+      zaiTools.forEach(tool => safeAddTool(tool));
+      console.error(`✅ Registered z.ai tools (glm_design - GLM-5V-Turbo multimodal vision)`);
+    }
 
     // Register workflow tools
     registerWorkflowTools(server);
@@ -838,7 +846,8 @@ async function initializeServer() {
       Perplexity: hasPerplexityApiKey(),
       OpenAI: hasOpenAIApiKey(),
       Gemini: hasGeminiApiKey(),
-      Grok: hasGrokApiKey()
+      Grok: hasGrokApiKey(),
+      ZAI: hasZaiApiKey()
     };
     const configured = Object.entries(apiStatus).filter(([_, v]) => v).map(([k, _]) => k);
     if (configured.length > 0) {

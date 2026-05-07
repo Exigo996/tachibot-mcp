@@ -39,6 +39,7 @@ export const researchPowerProfile: ProfileConfig = {
     qwen_competitive: false,
     minimax_code: false,
     minimax_agent: true,       // Agentic for research workflows
+    glm_design: false,         // Design/styling - not primary focus for research
     workflow: true,
     list_workflows: false,
     create_workflow: false,

@@ -39,6 +39,7 @@ export const balancedProfile: ProfileConfig = {
     qwen_competitive: false,
     minimax_code: true,
     minimax_agent: true,
+    glm_design: true,
     workflow: true,
     list_workflows: true,
     create_workflow: true,

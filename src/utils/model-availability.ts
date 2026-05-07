@@ -9,6 +9,7 @@ import {
   hasPerplexityApiKey,
   hasGeminiApiKey,
   hasOpenRouterApiKey,
+  hasZaiApiKey,
 } from "./api-keys.js";
 import { isToolEnabled } from "./tool-config.js";
 import { modelProviderRegistry } from "../orchestrators/collaborative/registries/ModelProviderRegistry.js";
@@ -30,6 +31,7 @@ const providerApiKeyChecks: Record<string, () => boolean> = {
   "perplexity": hasPerplexityApiKey,
   "openai": hasOpenAIApiKey,
   "openrouter": hasOpenRouterApiKey,
+  "z.ai": hasZaiApiKey,
   "anthropic": () => true, // Always available in Claude Code context
 };
 

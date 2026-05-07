@@ -39,6 +39,7 @@ export const fullProfile: ProfileConfig = {
     qwen_competitive: true,
     minimax_code: true,
     minimax_agent: true,
+    glm_design: true,
     workflow: true,
     list_workflows: true,
     create_workflow: true,
