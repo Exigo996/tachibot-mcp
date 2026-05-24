@@ -783,7 +783,7 @@ async function initializeServer() {
     if (isZaiAvailable()) {
       const zaiTools = getAllZaiTools();
       zaiTools.forEach(tool => safeAddTool(tool));
-      console.error(`✅ Registered z.ai tools (glm_design - GLM-5V-Turbo multimodal vision)`);
+      console.error(`✅ Registered z.ai tools (glm_design - GLM-5.1 agentic/coding)`);
     }
 
     // Register workflow tools

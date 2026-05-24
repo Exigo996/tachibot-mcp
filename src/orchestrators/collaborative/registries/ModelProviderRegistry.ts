@@ -143,5 +143,5 @@ modelProviderRegistry.registerMany([
   { modelName: "openai-reason", toolName: "openai_reason", provider: "openai", aliases: ["gpt-reason"] },
 
   // GLM models (z.ai / ZhipuAI)
-  { modelName: "glm", toolName: "glm_design", provider: "z.ai", aliases: ["glm-5v-turbo", "glm-5v", "glm-design", "zai"] },
+  { modelName: "glm", toolName: "glm_design", provider: "z.ai", aliases: ["glm-5.1", "glm-51", "glm-design", "zai"] },
 ]);

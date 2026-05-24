@@ -150,7 +150,7 @@ async function callZai(
 export const glmDesignTool = {
   name: "glm_design",
   description:
-    "Design and styling analysis with GLM-5V-Turbo (multimodal vision model). " +
+    "Design and styling analysis with GLM-5.1 (agentic/coding model). " +
     "Specializes in UI/UX feedback, CSS styling, color theory, responsive design, accessibility, and design-to-code conversion. " +
     "Put your REQUEST in the 'query' parameter.",
   parameters: z.object({

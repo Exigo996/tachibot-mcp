@@ -58,7 +58,7 @@ export interface ToolsConfig {
   minimax_agent: boolean;      // MiniMax M2.7 (agentic, self-evolving)
 
   // z.ai GLM tools
-  glm_design: boolean;        // GLM-5V-Turbo (multimodal vision, design/styling)
+  glm_design: boolean;        // GLM-5.1 (agentic/coding, design/styling)
 
   // Workflow tools
   workflow: boolean;

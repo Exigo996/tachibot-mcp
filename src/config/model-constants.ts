@@ -350,10 +350,10 @@ export const TOOL_DEFAULTS = {
     temperature: 0.5,                      // Balanced for agentic tasks
   },
 
-  // z.ai GLM tools - vision multimodal
+  // z.ai GLM tools - agentic/coding flagship
   glm_design: {
-    model: GLM_MODELS.GLM_5V_TURBO,      // Multimodal vision: design, styling, screenshots
-    maxTokens: 6000,
+    model: GLM_MODELS.GLM_5_1,           // Agentic/coding flagship: design, styling, code
+    maxTokens: 32000,
     temperature: 0.7,                      // Balanced for creative design work
   },
 
