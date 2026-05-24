@@ -898,16 +898,21 @@ process.on('SIGTERM', () => {
 });
 
 // SIGPIPE: client closed the pipe — exit cleanly
-process.on('SIGPIPE', () => {
-  process.exit(0);
-});
+if (process.platform !== 'win32') {
+  process.on('SIGPIPE', () => {
+    process.exit(0);
+  });
+}
 
 // Catch unhandled promise rejections
 process.on('unhandledRejection', (reason, _promise) => {
   // Use process.stderr.write directly — avoids re-entering uncaughtException
   // if stderr itself is broken (EPIPE).
   try {
-    process.stderr.write(`Unhandled Rejection: ${reason}\n`);
+    const reasonText = reason instanceof Error
+      ? (reason.stack ?? reason.message)
+      : String(reason);
+    process.stderr.write(`Unhandled Rejection: ${reasonText}\n`);
   } catch {
     // stderr broken — nothing to do
   }
